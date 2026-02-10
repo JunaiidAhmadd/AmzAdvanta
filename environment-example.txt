@@ -1,0 +1,21 @@
+# Email Configuration (for production)
+SMTP_HOST=your-smtp-host
+SMTP_PORT=587
+SMTP_USER=your-email@amzadvanta.com
+SMTP_PASS=your-app-password
+
+# Database Configuration (if using database)
+DATABASE_URL=mongodb+srv://username:password@cluster.mongodb.net/amzadvanta
+
+# Analytics (optional)
+GOOGLE_ANALYTICS_ID=G-XXXXXXXXXX
+
+# Recaptcha (for spam protection)
+RECAPTCHA_SECRET_KEY=your-recaptcha-secret-key
+RECAPTCHA_SITE_KEY=your-recaptcha-site-key
+
+# Contact Email (where form submissions are sent)
+CONTACT_EMAIL=info@amzadvanta.com
+
+# Business Email (for audit requests)
+BUSINESS_EMAIL=audits@amzadvanta.com
