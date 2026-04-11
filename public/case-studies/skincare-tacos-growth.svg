@@ -1,0 +1,12 @@
+<svg width="640" height="360" viewBox="0 0 640 360" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="640" height="360" rx="26" fill="#0B1328"/>
+  <rect x="10" y="10" width="620" height="340" rx="20" fill="#0D1733" stroke="#2A3E72"/>
+  <circle cx="108" cy="300" r="180" fill="rgba(59,130,246,0.28)"/>
+  <circle cx="540" cy="68" r="140" fill="rgba(59,130,246,0.2)"/>
+  <circle cx="570" cy="282" r="170" fill="rgba(163,230,53,0.12)"/>
+  <rect x="46" y="74" width="370" height="220" rx="16" fill="rgba(9,18,43,0.8)" stroke="#3B82F6"/>
+  <text x="64" y="138" fill="#A3E635" font-family="Arial, sans-serif" font-size="34" font-weight="800" letter-spacing="1">REVENUE x3.6</text>
+  <text x="64" y="182" fill="#A3E635" font-family="Arial, sans-serif" font-size="30" font-weight="800" letter-spacing="1">TACOS DOWN 70%</text>
+  <text x="64" y="224" fill="#D1D5DB" font-family="Arial, sans-serif" font-size="18" font-weight="600">Incrementum-style case insight</text>
+  <path d="M420 258C443 235 476 222 514 222C551 222 584 235 607 258" stroke="#A3E635" stroke-width="4" stroke-linecap="round"/>
+</svg>

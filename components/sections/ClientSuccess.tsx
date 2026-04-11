@@ -28,12 +28,12 @@ const ClientSuccess = () => {
       icon: Target,
       metric: '-45%',
       description: 'Average CPC Reduction',
-      color: 'text-orange-500'
+      color: 'text-lime-400'
     }
   ];
 
   return (
-    <section className="py-20 bg-black">
+    <section className="py-20 bg-[#05070d]">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div
@@ -47,8 +47,8 @@ const ClientSuccess = () => {
             Proven
             <span className="text-gradient"> Results</span>
           </h2>
-          <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-            We don't just manage campaigns – we deliver measurable results that 
+          <p className="text-xl text-slate-400 max-w-3xl mx-auto">
+            We don&apos;t just manage campaigns – we deliver measurable results that 
             transform Amazon businesses and drive sustainable growth.
           </p>
         </motion.div>
@@ -58,20 +58,20 @@ const ClientSuccess = () => {
           {successStories.map((story, index) => (
             <motion.div
               key={index}
-              className="text-center p-8 bg-gray-900 rounded-2xl border border-gray-800 hover:border-orange-500/50 transition-all duration-300"
+              className="text-center p-8 bg-[#0f172b] rounded-2xl border border-[#233560] hover:border-lime-400/50 transition-all duration-300"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
               viewport={{ once: true }}
               whileHover={{ scale: 1.05, y: -5 }}
             >
-              <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-gray-800 flex items-center justify-center">
+              <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-[#111b31] flex items-center justify-center">
                 <story.icon className={`w-8 h-8 ${story.color}`} />
               </div>
               <div className="text-4xl md:text-5xl font-bold text-gradient mb-3">
                 {story.metric}
               </div>
-              <div className="text-gray-400 leading-relaxed">
+              <div className="text-slate-400 leading-relaxed">
                 {story.description}
               </div>
             </motion.div>
@@ -80,7 +80,7 @@ const ClientSuccess = () => {
 
         {/* Additional Stats */}
         <motion.div
-          className="bg-gradient-to-r from-orange-500/10 to-red-500/10 rounded-3xl p-8 border border-orange-500/20"
+          className="bg-gradient-to-r from-lime-400/10 to-blue-500/10 rounded-3xl p-8 border border-lime-400/20"
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8 }}
@@ -99,7 +99,7 @@ const ClientSuccess = () => {
                 <div className="text-3xl md:text-4xl font-bold text-white mb-2">
                   {metric.value}
                 </div>
-                <div className="text-gray-400">
+                <div className="text-slate-400">
                   {metric.label}
                 </div>
               </motion.div>
@@ -115,11 +115,11 @@ const ClientSuccess = () => {
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          <blockquote className="text-2xl text-gray-300 italic max-w-4xl mx-auto mb-8">
-            "AmzAdvanta transformed our Amazon business. Their expertise in PPC management 
-            helped us achieve unprecedented growth and ROI that we never thought possible."
+          <blockquote className="text-2xl text-slate-300 italic max-w-4xl mx-auto mb-8">
+            &ldquo;AmzAdvanta transformed our Amazon business. Their expertise in PPC management 
+            helped us achieve unprecedented growth and ROI that we never thought possible.&rdquo;
           </blockquote>
-          <div className="text-gray-500">
+          <div className="text-slate-500">
             — CEO, TechGear Pro (324% Sales Increase)
           </div>
         </motion.div>

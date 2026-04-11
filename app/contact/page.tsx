@@ -5,10 +5,12 @@ import { motion } from 'framer-motion';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
+import Link from 'next/link';
 import { CheckCircle, Mail, Phone, MapPin, Send, Loader2, MessageSquare } from 'lucide-react';
 import Button from '@/components/ui/Button';
 import Input from '@/components/ui/Input';
 import Textarea from '@/components/ui/Textarea';
+import BrandLogoCarousel from '@/components/sections/BrandLogoCarousel';
 
 const contactSchema = z.object({
   name: z.string().min(2, 'Name must be at least 2 characters'),
@@ -22,6 +24,7 @@ type ContactFormData = z.infer<typeof contactSchema>;
 export default function ContactPage() {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
   const {
     register,
@@ -34,14 +37,26 @@ export default function ContactPage() {
 
   const onSubmit = async (data: ContactFormData) => {
     setIsSubmitting(true);
+    setSubmitError(null);
     try {
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 2000));
-      console.log('Contact form submitted:', data);
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+
+      const result = await response.json();
+      if (!response.ok || !result.success) {
+        throw new Error(result.message || 'Failed to submit contact form.');
+      }
+
       setIsSubmitted(true);
       reset();
     } catch (error) {
       console.error('Error submitting form:', error);
+      setSubmitError(error instanceof Error ? error.message : 'Something went wrong. Please try again.');
     } finally {
       setIsSubmitting(false);
     }
@@ -49,7 +64,7 @@ export default function ContactPage() {
 
   if (isSubmitted) {
     return (
-      <div className="min-h-screen bg-black flex items-center justify-center px-4">
+      <div className="min-h-screen bg-[#05070d] flex items-center justify-center px-4">
         <motion.div
           className="max-w-2xl w-full text-center"
           initial={{ opacity: 0, scale: 0.9 }}
@@ -62,8 +77,8 @@ export default function ContactPage() {
           <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
             Message Sent Successfully!
           </h1>
-          <p className="text-xl text-gray-400 mb-8 leading-relaxed">
-            Thank you for reaching out. We've received your message and will get back to you 
+          <p className="text-xl text-slate-400 mb-8 leading-relaxed">
+            Thank you for reaching out. We&apos;ve received your message and will get back to you 
             within 24 hours. We look forward to helping you grow your Amazon business.
           </p>
           <Button 
@@ -79,7 +94,7 @@ export default function ContactPage() {
   }
 
   return (
-    <div className="min-h-screen bg-black">
+    <div className="min-h-screen bg-[#05070d]">
       {/* Hero Section */}
       <section className="pt-32 pb-20 bg-gradient-dark">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -93,7 +108,7 @@ export default function ContactPage() {
               Get in
               <span className="text-gradient"> Touch</span>
             </h1>
-            <p className="text-xl text-gray-400 leading-relaxed">
+            <p className="text-xl text-slate-400 leading-relaxed">
               Ready to take your Amazon business to the next level? 
               Our team of PPC experts is here to help you achieve your goals.
             </p>
@@ -101,8 +116,14 @@ export default function ContactPage() {
         </div>
       </section>
 
+      <section className="bg-[#05070d] pb-10">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <BrandLogoCarousel />
+        </div>
+      </section>
+
       {/* Contact Content */}
-      <section className="py-20 bg-gray-950">
+      <section className="py-20 bg-[#0a1020]">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
             {/* Contact Form */}
@@ -113,8 +134,8 @@ export default function ContactPage() {
               viewport={{ once: true }}
             >
               <h2 className="text-3xl font-bold text-white mb-6">Send us a message</h2>
-              <p className="text-gray-400 mb-8">
-                Fill out the form below and we'll get back to you as soon as possible.
+              <p className="text-slate-400 mb-8">
+                Fill out the form below and we&apos;ll get back to you as soon as possible.
               </p>
 
               <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
@@ -145,6 +166,12 @@ export default function ContactPage() {
                   error={errors.message?.message}
                 />
 
+                {submitError && (
+                  <p className="rounded-lg border border-red-500/40 bg-red-500/10 px-4 py-3 text-sm text-red-300">
+                    {submitError}
+                  </p>
+                )}
+
                 <Button
                   type="submit"
                   size="lg"
@@ -174,70 +201,70 @@ export default function ContactPage() {
               viewport={{ once: true }}
             >
               <h2 className="text-3xl font-bold text-white mb-6">Contact Information</h2>
-              <p className="text-gray-400 mb-8">
+              <p className="text-slate-400 mb-8">
                 Have questions? Reach out to us through any of the following channels.
               </p>
 
               <div className="space-y-6 mb-12">
                 <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-xl bg-gray-800 flex items-center justify-center flex-shrink-0">
-                    <Mail className="w-6 h-6 text-orange-500" />
+                  <div className="w-12 h-12 rounded-xl bg-[#111b31] flex items-center justify-center flex-shrink-0">
+                    <Mail className="w-6 h-6 text-lime-400" />
                   </div>
                   <div>
                     <h3 className="text-lg font-semibold text-white mb-1">Email</h3>
-                    <p className="text-gray-400">info@amzadvanta.com</p>
-                    <p className="text-gray-500 text-sm">support@amzadvanta.com</p>
+                    <p className="text-slate-400">info@amzadvanta.com</p>
+                    <p className="text-slate-500 text-sm">support@amzadvanta.com</p>
                   </div>
                 </div>
 
                 <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-xl bg-gray-800 flex items-center justify-center flex-shrink-0">
-                    <Phone className="w-6 h-6 text-orange-500" />
+                  <div className="w-12 h-12 rounded-xl bg-[#111b31] flex items-center justify-center flex-shrink-0">
+                    <Phone className="w-6 h-6 text-lime-400" />
                   </div>
                   <div>
                     <h3 className="text-lg font-semibold text-white mb-1">Phone</h3>
-                    <p className="text-gray-400">+1 (555) 123-4567</p>
-                    <p className="text-gray-500 text-sm">Mon-Fri 9AM-6PM EST</p>
+                    <p className="text-slate-400">+1 (555) 123-4567</p>
+                    <p className="text-slate-500 text-sm">Mon-Fri 9AM-6PM EST</p>
                   </div>
                 </div>
 
                 <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-xl bg-gray-800 flex items-center justify-center flex-shrink-0">
-                    <MapPin className="w-6 h-6 text-orange-500" />
+                  <div className="w-12 h-12 rounded-xl bg-[#111b31] flex items-center justify-center flex-shrink-0">
+                    <MapPin className="w-6 h-6 text-lime-400" />
                   </div>
                   <div>
                     <h3 className="text-lg font-semibold text-white mb-1">Office</h3>
-                    <p className="text-gray-400">123 Business Ave, Suite 100</p>
-                    <p className="text-gray-400">New York, NY 10001</p>
+                    <p className="text-slate-400">123 Business Ave, Suite 100</p>
+                    <p className="text-slate-400">New York, NY 10001</p>
                   </div>
                 </div>
               </div>
 
               {/* Quick Links */}
-              <div className="bg-gray-900 rounded-2xl p-6 border border-gray-800">
+              <div className="bg-[#0f172b] rounded-2xl p-6 border border-[#233560]">
                 <h3 className="text-lg font-semibold text-white mb-4">Quick Links</h3>
                 <div className="space-y-3">
-                  <a
+                  <Link
                     href="/free-audit"
-                    className="flex items-center gap-3 text-gray-300 hover:text-orange-500 transition-colors duration-200"
+                    className="flex items-center gap-3 text-slate-300 hover:text-lime-400 transition-colors duration-200"
                   >
                     <MessageSquare className="w-5 h-5" />
                     <span>Request a Free Audit</span>
-                  </a>
-                  <a
+                  </Link>
+                  <Link
                     href="/services"
-                    className="flex items-center gap-3 text-gray-300 hover:text-orange-500 transition-colors duration-200"
+                    className="flex items-center gap-3 text-slate-300 hover:text-lime-400 transition-colors duration-200"
                   >
                     <MessageSquare className="w-5 h-5" />
                     <span>View Our Services</span>
-                  </a>
-                  <a
+                  </Link>
+                  <Link
                     href="/case-studies"
-                    className="flex items-center gap-3 text-gray-300 hover:text-orange-500 transition-colors duration-200"
+                    className="flex items-center gap-3 text-slate-300 hover:text-lime-400 transition-colors duration-200"
                   >
                     <MessageSquare className="w-5 h-5" />
                     <span>Read Success Stories</span>
-                  </a>
+                  </Link>
                 </div>
               </div>
             </motion.div>
@@ -246,7 +273,7 @@ export default function ContactPage() {
       </section>
 
       {/* Map Section */}
-      <section className="py-20 bg-black">
+      <section className="py-20 bg-[#05070d]">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <motion.div
             className="text-center mb-12"
@@ -259,31 +286,31 @@ export default function ContactPage() {
               Visit Our
               <span className="text-gradient"> Office</span>
             </h2>
-            <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-              Located in the heart of New York City, we're strategically positioned 
+            <p className="text-xl text-slate-400 max-w-3xl mx-auto">
+              Located in the heart of New York City, we&apos;re strategically positioned 
               to serve Amazon businesses across the globe.
             </p>
           </motion.div>
 
           <motion.div
-            className="bg-gray-900 rounded-2xl border border-gray-800 h-96 flex items-center justify-center"
+            className="bg-[#0f172b] rounded-2xl border border-[#233560] h-96 flex items-center justify-center"
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
             <div className="text-center">
-              <MapPin className="w-16 h-16 text-orange-500 mx-auto mb-4" />
-              <p className="text-gray-400 text-lg">Interactive Map</p>
+              <MapPin className="w-16 h-16 text-lime-400 mx-auto mb-4" />
+              <p className="text-slate-400 text-lg">Interactive Map</p>
               <p className="text-white text-2xl font-bold mt-2">New York, NY</p>
-              <p className="text-gray-500 mt-2">Google Maps integration would go here</p>
+              <p className="text-slate-500 mt-2">Google Maps integration would go here</p>
             </div>
           </motion.div>
         </div>
       </section>
 
       {/* FAQ Section */}
-      <section className="py-20 bg-gray-950">
+      <section className="py-20 bg-[#0a1020]">
         <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
           <motion.div
             className="text-center mb-12"
@@ -319,14 +346,14 @@ export default function ContactPage() {
             ].map((faq, index) => (
               <motion.div
                 key={index}
-                className="bg-gray-900 rounded-xl border border-gray-800 p-6"
+                className="bg-[#0f172b] rounded-xl border border-[#233560] p-6"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 viewport={{ once: true }}
               >
                 <h3 className="text-lg font-semibold text-white mb-3">{faq.question}</h3>
-                <p className="text-gray-400 leading-relaxed">{faq.answer}</p>
+                <p className="text-slate-400 leading-relaxed">{faq.answer}</p>
               </motion.div>
             ))}
           </div>

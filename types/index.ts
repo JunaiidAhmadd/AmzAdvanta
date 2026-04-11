@@ -12,12 +12,25 @@ export interface CaseStudy {
   clientLogo: string;
   title: string;
   description: string;
+  category?: string;
+  serviceType?: 'Amazon PPC' | 'Amazon SEO' | 'Design' | 'Platform Management';
+  shortSummary?: string;
   metrics: {
     label: string;
     value: string;
   }[];
   testimonial: string;
   image: string;
+  chartImage?: string;
+  insightTitle?: string;
+  insightPoints?: string[];
+  overview?: string[];
+  challenges?: string[];
+  approach?: {
+    title: string;
+    description: string;
+  }[];
+  outcomes?: string[];
 }
 
 export interface ContactForm {
@@ -30,9 +43,9 @@ export interface ContactForm {
 export interface AuditForm {
   name: string;
   email: string;
-  company: string;
-  phone?: string;
-  currentSpend?: string;
+  amazonCompany: string;
+  phone: string;
+  additionalDetails: string;
 }
 
 export interface HeroSection {

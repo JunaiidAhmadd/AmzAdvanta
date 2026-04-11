@@ -9,10 +9,10 @@ const Footer = () => {
 
   const footerLinks = {
     services: [
-      { name: 'Campaign Management', href: '/services#campaign-management' },
-      { name: 'Keyword Research', href: '/services#keyword-research' },
-      { name: 'A/B Testing', href: '/services#ab-testing' },
-      { name: 'Product Listing Optimization', href: '/services#product-listing' }
+      { name: 'Amazon PPC', href: '/services#amazon-ppc' },
+      { name: 'Amazon SEO', href: '/services#amazon-seo' },
+      { name: 'Design', href: '/services#design-creative' },
+      { name: 'Platform Management', href: '/services#platform-management' }
     ],
     company: [
       { name: 'About Us', href: '/about' },
@@ -28,7 +28,7 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-black border-t border-gray-800">
+    <footer className="bg-[#05070d] border-t border-[#233560]">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
           {/* Company Info */}
@@ -39,24 +39,24 @@ const Footer = () => {
               transition={{ duration: 0.6 }}
             >
               <h3 className="text-2xl font-bold text-white mb-4">
-                Amz<span className="text-orange-500">Advanta</span>
+                Amz<span className="text-lime-400">Advanta</span>
               </h3>
-              <p className="text-gray-400 mb-6 max-w-md">
+              <p className="text-slate-400 mb-6 max-w-md">
                 Your trusted partner for Amazon PPC management. We transform your advertising investment into measurable revenue growth.
               </p>
               
               {/* Contact Info */}
               <div className="space-y-3">
-                <div className="flex items-center text-gray-400 hover:text-white transition-colors duration-200">
-                  <Mail size={18} className="mr-3 text-orange-500" />
+                <div className="flex items-center text-slate-400 hover:text-white transition-colors duration-200">
+                  <Mail size={18} className="mr-3 text-lime-400" />
                   <span>info@amzadvanta.com</span>
                 </div>
-                <div className="flex items-center text-gray-400 hover:text-white transition-colors duration-200">
-                  <Phone size={18} className="mr-3 text-orange-500" />
+                <div className="flex items-center text-slate-400 hover:text-white transition-colors duration-200">
+                  <Phone size={18} className="mr-3 text-lime-400" />
                   <span>+1 (555) 123-4567</span>
                 </div>
-                <div className="flex items-center text-gray-400 hover:text-white transition-colors duration-200">
-                  <MapPin size={18} className="mr-3 text-orange-500" />
+                <div className="flex items-center text-slate-400 hover:text-white transition-colors duration-200">
+                  <MapPin size={18} className="mr-3 text-lime-400" />
                   <span>New York, NY 10001</span>
                 </div>
               </div>
@@ -65,7 +65,7 @@ const Footer = () => {
               <div className="flex space-x-4 mt-6">
                 <motion.a
                   href="#"
-                  className="text-gray-400 hover:text-orange-500 transition-colors duration-200"
+                  className="text-slate-400 hover:text-lime-400 transition-colors duration-200"
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}
                 >
@@ -73,7 +73,7 @@ const Footer = () => {
                 </motion.a>
                 <motion.a
                   href="#"
-                  className="text-gray-400 hover:text-orange-500 transition-colors duration-200"
+                  className="text-slate-400 hover:text-lime-400 transition-colors duration-200"
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}
                 >
@@ -81,7 +81,7 @@ const Footer = () => {
                 </motion.a>
                 <motion.a
                   href="#"
-                  className="text-gray-400 hover:text-orange-500 transition-colors duration-200"
+                  className="text-slate-400 hover:text-lime-400 transition-colors duration-200"
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}
                 >
@@ -103,7 +103,7 @@ const Footer = () => {
                 <li key={link.name}>
                   <Link
                     href={link.href}
-                    className="text-gray-400 hover:text-orange-500 transition-colors duration-200 text-sm"
+                    className="text-slate-400 hover:text-lime-400 transition-colors duration-200 text-sm"
                   >
                     {link.name}
                   </Link>
@@ -124,7 +124,7 @@ const Footer = () => {
                 <li key={link.name}>
                   <Link
                     href={link.href}
-                    className="text-gray-400 hover:text-orange-500 transition-colors duration-200 text-sm"
+                    className="text-slate-400 hover:text-lime-400 transition-colors duration-200 text-sm"
                   >
                     {link.name}
                   </Link>
@@ -145,7 +145,7 @@ const Footer = () => {
                 <li key={link.name}>
                   <Link
                     href={link.href}
-                    className="text-gray-400 hover:text-orange-500 transition-colors duration-200 text-sm"
+                    className="text-slate-400 hover:text-lime-400 transition-colors duration-200 text-sm"
                   >
                     {link.name}
                   </Link>
@@ -157,16 +157,16 @@ const Footer = () => {
 
         {/* Bottom Bar */}
         <motion.div
-          className="border-t border-gray-800 mt-12 pt-8"
+          className="border-t border-[#233560] mt-12 pt-8"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.4 }}
         >
           <div className="flex flex-col md:flex-row justify-between items-center">
-            <p className="text-gray-400 text-sm">
-              © {currentYear} AmzAdvanta. All rights reserved.
+            <p className="text-slate-400 text-sm">
+              &copy; {currentYear} AmzAdvanta. All rights reserved.
             </p>
-            <p className="text-gray-400 text-sm mt-2 md:mt-0">
+            <p className="text-slate-400 text-sm mt-2 md:mt-0">
               Transforming Amazon businesses through data-driven PPC management
             </p>
           </div>

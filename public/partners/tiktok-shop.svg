@@ -1,0 +1,6 @@
+<svg width="220" height="56" viewBox="0 0 220 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect x="1" y="1" width="218" height="54" rx="10" stroke="#2A3E72" fill="#0B1328"/>
+  <path d="M30 17V33.5C30 36.8 32.7 39.5 36 39.5C39.3 39.5 42 36.8 42 33.5" stroke="#A3E635" stroke-width="3" stroke-linecap="round"/>
+  <path d="M30 21C34.3 21 37.7 18.5 39 15" stroke="#3B82F6" stroke-width="3" stroke-linecap="round"/>
+  <text x="66" y="33" fill="#E2E8F0" font-family="Arial, sans-serif" font-size="16" font-weight="700" letter-spacing="1.2">TIKTOK SHOP</text>
+</svg>

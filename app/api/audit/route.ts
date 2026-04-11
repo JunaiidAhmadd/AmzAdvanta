@@ -1,13 +1,15 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
+import { sendOwnerNotification } from '@/lib/mailer';
+
+export const runtime = 'nodejs';
 
 const auditSchema = z.object({
   name: z.string().min(2),
   email: z.string().email(),
-  company: z.string().min(2),
+  amazonCompany: z.string().min(2),
   phone: z.string().optional(),
-  currentSpend: z.string().optional(),
-  goals: z.string().min(10),
+  additionalDetails: z.string().min(10),
 });
 
 export async function POST(request: NextRequest) {
@@ -17,7 +19,6 @@ export async function POST(request: NextRequest) {
     // Validate the request body
     const validatedData = auditSchema.parse(body);
     
-    // Log the submission (in production, you'd save to database or send email)
     console.log('Audit request submission:', {
       ...validatedData,
       timestamp: new Date().toISOString(),
@@ -25,40 +26,23 @@ export async function POST(request: NextRequest) {
       type: 'free-audit-request'
     });
 
-    // Simulate processing time
-    await new Promise(resolve => setTimeout(resolve, 1500));
-
-    // Here you would typically:
-    // 1. Save to database
-    // 2. Send email notification to sales team
-    // 3. Add to CRM as lead
-    // 4. Send confirmation email to customer
-    // 5. Schedule follow-up task
-    // 6. Create initial audit project
-
-    // Example email notification (in production):
-    // await sendEmail({
-    //   to: 'sales@amzadvanta.com',
-    //   subject: `New Audit Request: ${validatedData.company}`,
-    //   template: 'audit-request',
-    //   data: validatedData
-    // });
-
-    // Example CRM integration (in production):
-    // await addToCRM({
-    //   contact: {
-    //     name: validatedData.name,
-    //     email: validatedData.email,
-    //     phone: validatedData.phone,
-    //     company: validatedData.company
-    //   },
-    //   lead: {
-    //     source: 'website-audit-form',
-    //     status: 'new',
-    //     value: validatedData.currentSpend,
-    //     notes: validatedData.goals
-    //   }
-    // });
+    await sendOwnerNotification({
+      formName: 'Free Audit Form',
+      subject: `New Free Audit Request: ${validatedData.amazonCompany}`,
+      fields: [
+        { label: 'Name', value: validatedData.name },
+        { label: 'Email', value: validatedData.email },
+        { label: 'Amazon Company Name', value: validatedData.amazonCompany },
+        { label: 'Phone', value: validatedData.phone || 'Not provided' },
+        { label: 'Additional Details', value: validatedData.additionalDetails },
+      ],
+      replyTo: validatedData.email,
+      userAgent: request.headers.get('user-agent') ?? undefined,
+      ipAddress:
+        request.headers.get('x-forwarded-for')?.split(',')[0]?.trim() ??
+        request.headers.get('x-real-ip') ??
+        undefined,
+    });
 
     return NextResponse.json(
       { 

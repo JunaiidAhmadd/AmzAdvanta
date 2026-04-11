@@ -1,0 +1,55 @@
+<svg width="980" height="620" viewBox="0 0 980 620" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="980" height="620" rx="24" fill="#0B1328"/>
+  <rect x="30" y="30" width="920" height="90" rx="14" fill="#0F172B" stroke="#2A3E72"/>
+  <rect x="52" y="52" width="180" height="46" rx="10" fill="#111B31"/>
+  <text x="66" y="80" fill="#E2E8F0" font-family="Arial, sans-serif" font-size="18" font-weight="700">PPC Dashboard</text>
+  <text x="750" y="80" fill="#A3E635" font-family="Arial, sans-serif" font-size="16" font-weight="700">LIVE DATA</text>
+
+  <rect x="30" y="142" width="286" height="130" rx="14" fill="#0F172B" stroke="#2A3E72"/>
+  <text x="52" y="176" fill="#94A3B8" font-family="Arial, sans-serif" font-size="15" font-weight="600">Revenue (30d)</text>
+  <text x="52" y="226" fill="#E2E8F0" font-family="Arial, sans-serif" font-size="40" font-weight="800">$426,850</text>
+  <text x="52" y="254" fill="#A3E635" font-family="Arial, sans-serif" font-size="14" font-weight="700">+18.4% vs previous</text>
+
+  <rect x="346" y="142" width="286" height="130" rx="14" fill="#0F172B" stroke="#2A3E72"/>
+  <text x="368" y="176" fill="#94A3B8" font-family="Arial, sans-serif" font-size="15" font-weight="600">ROAS</text>
+  <text x="368" y="226" fill="#E2E8F0" font-family="Arial, sans-serif" font-size="40" font-weight="800">8.7x</text>
+  <text x="368" y="254" fill="#A3E635" font-family="Arial, sans-serif" font-size="14" font-weight="700">Efficiency trending up</text>
+
+  <rect x="662" y="142" width="288" height="130" rx="14" fill="#0F172B" stroke="#2A3E72"/>
+  <text x="684" y="176" fill="#94A3B8" font-family="Arial, sans-serif" font-size="15" font-weight="600">TACOS</text>
+  <text x="684" y="226" fill="#E2E8F0" font-family="Arial, sans-serif" font-size="40" font-weight="800">11.2%</text>
+  <text x="684" y="254" fill="#3B82F6" font-family="Arial, sans-serif" font-size="14" font-weight="700">Stable with scale</text>
+
+  <rect x="30" y="294" width="620" height="296" rx="14" fill="#0F172B" stroke="#2A3E72"/>
+  <text x="52" y="328" fill="#94A3B8" font-family="Arial, sans-serif" font-size="15" font-weight="600">Sales Growth Trend</text>
+
+  <line x1="52" y1="540" x2="620" y2="540" stroke="#1E293B" stroke-width="2"/>
+  <line x1="52" y1="505" x2="620" y2="505" stroke="#1E293B" stroke-width="1.5"/>
+  <line x1="52" y1="470" x2="620" y2="470" stroke="#1E293B" stroke-width="1.5"/>
+  <line x1="52" y1="435" x2="620" y2="435" stroke="#1E293B" stroke-width="1.5"/>
+  <line x1="52" y1="400" x2="620" y2="400" stroke="#1E293B" stroke-width="1.5"/>
+  <line x1="52" y1="365" x2="620" y2="365" stroke="#1E293B" stroke-width="1.5"/>
+
+  <polyline points="70,520 140,498 210,505 280,450 350,430 420,390 490,365 560,330 620,300"
+    fill="none" stroke="#A3E635" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <polyline points="70,535 140,528 210,520 280,500 350,485 420,460 490,435 560,410 620,382"
+    fill="none" stroke="#3B82F6" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.9"/>
+
+  <circle cx="620" cy="300" r="6" fill="#A3E635"/>
+  <circle cx="620" cy="382" r="5" fill="#3B82F6"/>
+
+  <rect x="680" y="294" width="270" height="296" rx="14" fill="#0F172B" stroke="#2A3E72"/>
+  <text x="702" y="328" fill="#94A3B8" font-family="Arial, sans-serif" font-size="15" font-weight="600">Channel Mix</text>
+
+  <rect x="702" y="358" width="220" height="22" rx="8" fill="#111B31"/>
+  <rect x="702" y="358" width="168" height="22" rx="8" fill="#A3E635"/>
+  <text x="702" y="396" fill="#E2E8F0" font-family="Arial, sans-serif" font-size="14" font-weight="700">Sponsored Products 76%</text>
+
+  <rect x="702" y="426" width="220" height="22" rx="8" fill="#111B31"/>
+  <rect x="702" y="426" width="106" height="22" rx="8" fill="#3B82F6"/>
+  <text x="702" y="464" fill="#E2E8F0" font-family="Arial, sans-serif" font-size="14" font-weight="700">Sponsored Brands 48%</text>
+
+  <rect x="702" y="494" width="220" height="22" rx="8" fill="#111B31"/>
+  <rect x="702" y="494" width="84" height="22" rx="8" fill="#22D3EE"/>
+  <text x="702" y="532" fill="#E2E8F0" font-family="Arial, sans-serif" font-size="14" font-weight="700">Display + DSP 38%</text>
+</svg>

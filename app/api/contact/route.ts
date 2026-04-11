@@ -1,5 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
+import { sendOwnerNotification } from '@/lib/mailer';
+
+export const runtime = 'nodejs';
 
 const contactSchema = z.object({
   name: z.string().min(2),
@@ -15,26 +18,33 @@ export async function POST(request: NextRequest) {
     // Validate the request body
     const validatedData = contactSchema.parse(body);
     
-    // Log the submission (in production, you'd save to database or send email)
     console.log('Contact form submission:', {
       ...validatedData,
       timestamp: new Date().toISOString(),
       userAgent: request.headers.get('user-agent') || 'unknown',
     });
 
-    // Simulate processing time
-    await new Promise(resolve => setTimeout(resolve, 1000));
-
-    // Here you would typically:
-    // 1. Save to database
-    // 2. Send email notification
-    // 3. Add to CRM
-    // 4. Send confirmation email to customer
+    await sendOwnerNotification({
+      formName: 'Contact Form',
+      subject: `New Contact Form Submission: ${validatedData.subject}`,
+      fields: [
+        { label: 'Name', value: validatedData.name },
+        { label: 'Email', value: validatedData.email },
+        { label: 'Subject', value: validatedData.subject },
+        { label: 'Message', value: validatedData.message },
+      ],
+      replyTo: validatedData.email,
+      userAgent: request.headers.get('user-agent') ?? undefined,
+      ipAddress:
+        request.headers.get('x-forwarded-for')?.split(',')[0]?.trim() ??
+        request.headers.get('x-real-ip') ??
+        undefined,
+    });
 
     return NextResponse.json(
       { 
         success: true, 
-        message: 'Contact form submitted successfully' 
+        message: 'Contact form submitted successfully.' 
       },
       { status: 200 }
     );

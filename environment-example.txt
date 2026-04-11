@@ -1,8 +1,11 @@
-# Email Configuration (for production)
-SMTP_HOST=your-smtp-host
+# Email Configuration (Gmail SMTP)
+# Use App Password from Google Account Security (recommended), not your normal Gmail password.
+SMTP_HOST=smtp.gmail.com
 SMTP_PORT=587
-SMTP_USER=your-email@amzadvanta.com
-SMTP_PASS=your-app-password
+SMTP_SECURE=false
+SMTP_USER=amzadvanta@gmail.com
+SMTP_PASS=your-16-char-google-app-password
+SMTP_FROM=amzadvanta@gmail.com
 
 # Database Configuration (if using database)
 DATABASE_URL=mongodb+srv://username:password@cluster.mongodb.net/amzadvanta
@@ -14,8 +17,5 @@ GOOGLE_ANALYTICS_ID=G-XXXXXXXXXX
 RECAPTCHA_SECRET_KEY=your-recaptcha-secret-key
 RECAPTCHA_SITE_KEY=your-recaptcha-site-key
 
-# Contact Email (where form submissions are sent)
-CONTACT_EMAIL=info@amzadvanta.com
-
-# Business Email (for audit requests)
-BUSINESS_EMAIL=audits@amzadvanta.com
+# Contact Email (where all form submissions are sent)
+CONTACT_EMAIL=amzadvanta@gmail.com

@@ -3,6 +3,14 @@
 @layer base {
   :root {
     --font-inter: 'Inter', sans-serif;
+    --bg-primary: #05070d;
+    --bg-secondary: #0a1020;
+    --surface: #0f172b;
+    --border: #233560;
+    --text-primary: #f8fbff;
+    --text-muted: #94a3b8;
+    --accent: #a3e635;
+    --accent-strong: #3b82f6;
   }
 
   html {
@@ -11,6 +19,8 @@
 
   body {
     font-family: var(--font-inter), sans-serif;
+    background: var(--bg-primary);
+    color: var(--text-primary);
   }
 
   /* Custom scrollbar */
@@ -19,22 +29,22 @@
   }
 
   ::-webkit-scrollbar-track {
-    background: #1a1a1a;
+    background: #0b1328;
   }
 
   ::-webkit-scrollbar-thumb {
-    background: #f97316;
+    background: #a3e635;
     border-radius: 4px;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: #ea580c;
+    background: #84cc16;
   }
 
   /* Selection styles */
   ::selection {
-    background: #f97316;
-    color: white;
+    background: #a3e635;
+    color: #020617;
   }
 
   /* Focus styles */
@@ -43,25 +53,66 @@
   }
 
   *:focus-visible {
-    outline: 2px solid #f97316;
+    outline: 2px solid #a3e635;
     outline-offset: 2px;
   }
 }
 
 @layer utilities {
+  @keyframes logoMarquee {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  .logo-marquee {
+    overflow: hidden;
+    width: 100%;
+  }
+
+  .logo-track {
+    display: flex;
+    width: max-content;
+    gap: 0.75rem;
+    padding: 0 0.75rem;
+    animation: logoMarquee 32s linear infinite;
+  }
+
+  .logo-marquee:hover .logo-track {
+    animation-play-state: paused;
+  }
+
+  .logo-slide {
+    flex: 0 0 auto;
+    width: 220px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.125rem 0;
+  }
+
+  @media (max-width: 640px) {
+    .logo-slide {
+      width: 180px;
+    }
+  }
+
   .text-gradient {
-    @apply bg-gradient-to-r from-orange-500 to-red-500 bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-lime-400 to-blue-500 bg-clip-text text-transparent;
   }
 
   .bg-gradient-dark {
-    @apply bg-gradient-to-br from-black via-gray-900 to-black;
+    @apply bg-gradient-to-br from-[#04070f] via-[#0b1330] to-[#05070d];
   }
 
   .shadow-glow {
-    box-shadow: 0 0 20px rgba(249, 115, 22, 0.3);
+    box-shadow: 0 12px 28px rgba(59, 130, 246, 0.3);
   }
 
   .shadow-glow-hover:hover {
-    box-shadow: 0 0 30px rgba(249, 115, 22, 0.5);
+    box-shadow: 0 18px 36px rgba(163, 230, 53, 0.25);
   }
 }

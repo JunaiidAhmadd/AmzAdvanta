@@ -17,13 +17,13 @@ interface ButtonProps {
 
 const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   ({ className = '', variant = 'primary', size = 'md', loading = false, children, disabled, onClick, type = 'button', ...props }, ref) => {
-    const baseClasses = 'inline-flex items-center justify-center rounded-full font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 focus:ring-offset-black disabled:opacity-50 disabled:cursor-not-allowed';
+    const baseClasses = 'inline-flex items-center justify-center rounded-full font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-lime-400 focus:ring-offset-2 focus:ring-offset-[#05070d] disabled:opacity-50 disabled:cursor-not-allowed';
     
     const variants = {
-      primary: 'bg-orange-500 hover:bg-orange-600 text-white shadow-lg hover:shadow-orange-500/25',
-      secondary: 'bg-gray-700 hover:bg-gray-600 text-white',
-      outline: 'border border-orange-500 text-orange-500 hover:bg-orange-500 hover:text-white',
-      ghost: 'text-gray-300 hover:text-white hover:bg-gray-800'
+      primary: 'bg-lime-400 hover:bg-lime-300 text-slate-950 shadow-lg hover:shadow-lime-400/25',
+      secondary: 'bg-[#182744] hover:bg-[#22345f] text-white',
+      outline: 'border border-lime-400 text-lime-400 hover:bg-lime-400 hover:text-slate-950',
+      ghost: 'text-slate-300 hover:text-white hover:bg-[#111b31]'
     };
 
     const sizes = {
